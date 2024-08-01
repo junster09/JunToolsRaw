@@ -307,6 +307,12 @@ public class JunToolsOutfitScript : EditorWindow
 
     }
     private void BuildAnimator(){
+        //error if there's no none
+        if(noneAnimation == null){
+            Debug.LogError("there is no set \"None Animation\", please set a \"None Animation\" and build again");
+            return;
+        }
+
         //make the layer if it doesn't exist
         int layerIndex = JunToolsHelper.addLayerToAnimator(targetAnimator,layerName);
         //make main parameter if it doesn't exist
