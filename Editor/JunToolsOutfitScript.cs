@@ -80,15 +80,18 @@ public class JunToolsOutfitScript : EditorWindow
         // [-] [+]
         GUILayout.BeginHorizontal();
 
+        if(GUILayout.Button("+")){
+            StateObj obj = new StateObj("",_parameterName,0,0,_parent);
+            if(noneAnimation != null){
+                obj.animation = noneAnimation;
+            };
+            _list.Add(obj);
+        };
+
         if(num > 1){
             if(GUILayout.Button("-")){
                 _list.RemoveAt(_list.Count-1);
             }
-        };
-
-        if(GUILayout.Button("+")){
-            
-            _list.Add(new StateObj("",_parameterName,0,0,_parent));
         };
 
         GUILayout.EndHorizontal();
@@ -218,21 +221,10 @@ public class JunToolsOutfitScript : EditorWindow
 
         foreach(StateObj obj in _rootObject.children){
             if(obj.type == 0){
-                Debug.Log("Walking through state: " + obj.name);
-                if(obj.stateObject == null){
-                    Debug.LogError(obj.name + " has no linked \"stateObject\"");
-                }
                 //state -> exit (we "walk" up the family tree, starting at self)
                 curWalk = obj;
 
                 while(curWalk != null){
-
-                    if(curWalk != null){
-                        Debug.Log("Linking: " + obj.name + " to EXIT using: " + curWalk.name + "\'s condition of: " + curWalk.valueName);
-                    }else{
-                        Debug.Log("Linking: " + obj.name + " to NULL");
-                    }
-
                     if(curWalk == null){
                         break;
                     }
