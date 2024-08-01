@@ -20,8 +20,6 @@ Allows the user to create selectors for toggles, with support for substating.
 
 **[Emotion Set Setup]** refactor code to be less messy
 
-**[Selector Setup]** Switch the [-]/[+] buttons
-
 **[Selector Setup]** Add a "substate sync", upon adding a substate and parameter, press a button to "sync" state names with the layer that has said substate parameter.
 
 **[Selector Setup]** Add a safety check, so that the tool doesn't destroy and regenerate an already generated animator tree; but instead changes or adds any difference.
